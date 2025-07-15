@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! - Make a Wish!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="wishes-page">
+    <div class="balloon-background"></div>
+    <div class="confetti-background"></div>
+
+    <div class="page-container">
+        <h1>Time to Make a Wish!</h1>
+        <p>Before we proceed to the grand cake cutting ceremony and the ultimate celebration, there's one magical moment left: your birthday wish.</p>
+        <p>Close your eyes, think of something truly special, and whisper your deepest desire. This moment is all yours!</p>
+
+        <div class="cake-prelude-visual">
+            <img src="cake.webp" alt="Birthday Cake Illustration" style="max-width: 80%; height: auto; margin: 30px auto; display: block; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            <p style="font-size: 1.2em; font-weight: 600; color: #FF69B4;">(Imagine your beautiful birthday cake right here!)</p>
+        </div>
+
+        <p style="margin-top: 40px;">Ready to blow out the candles and make that wish come true?</p>
+
+        <button class="next-btn" id="proceedToJourney">Light the Candles!</button>
+    </div>
+
+    <div class="music-controls" id="musicControls">
+        <audio id="backgroundMusic" src="sss.mp3" loop></audio>
+        <button id="playPauseBtn" class="fas fa-play"></button>
+    </div>
+
+    <button id="music-toggle" class="music-toggle-btn">Play Music</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
