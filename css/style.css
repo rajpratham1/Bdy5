@@ -1,0 +1,944 @@
+/* General Body & HTML Styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Ensure body expands with content and allows scrolling */
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto;   /* Allow vertical scrolling when content exceeds viewport */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links if any */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Modern, friendly font */
+    color: #333; /* Soft dark text */
+    line-height: 1.7;
+    /* Richer, more vibrant background gradient */
+    background: linear-gradient(165deg, #FFC0CB 0%, #FFDAB9 30%, #FFEFD5 60%, #B0E0E6 100%); /* Baby Pink -> Peachpuff -> Moccasin -> Powder Blue */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* For music toggle button positioning and balloon background */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Import Google Fonts - Add this to the top of your CSS or in HTML <head> */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
+
+
+/* Scrollbar Styling - Vibrant colors */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+body::-webkit-scrollbar-track {
+    background: #FFFAF0; /* Floral White */
+    border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #FF6347; /* Tomato Red */
+    border-radius: 10px;
+    border: 3px solid #FFFAF0;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #FF4500; /* OrangeRed */
+}
+
+/* Page Container - The "Card" or "Content Area" */
+.page-container {
+    max-width: 960px;
+    width: 90%;
+    margin: 50px auto;
+    padding: 60px 70px;
+    background-color: rgba(255, 255, 255, 0.98); /* Very slightly transparent white */
+    border-radius: 25px; /* More rounded corners */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); /* Stronger, softer shadow */
+    position: relative;
+    z-index: 10; /* Ensure it's above balloons */
+    text-align: center;
+    overflow: hidden; /* Contains any internal floating elements */
+    border: 5px solid #FFD700; /* Gold border for a celebratory touch */
+    transform: translateY(0); /* Ensure no initial transform interference */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for future use */
+}
+
+/* Text & Headings */
+h1, h2 {
+    font-family: 'Dancing Script', cursive; /* Elegant, celebratory script font */
+    color: #FF1493; /* Deep Pink */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1); /* More pronounced text shadow */
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: 5em; /* Larger headings */
+    margin-bottom: 40px;
+    color: #FF007F; /* Even more vibrant pink */
+}
+
+h2 {
+    font-size: 3em; /* Larger subheadings */
+    margin-top: 50px;
+    color: #8A2BE2; /* Blue Violet */
+}
+
+p {
+    margin-bottom: 25px;
+    font-size: 1.15em; /* Slightly larger text */
+    color: #444;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons - More vibrant and impactful */
+.next-btn, .continue-btn, .return-to-start-btn {
+    display: inline-block;
+    padding: 20px 45px; /* Larger padding */
+    margin-top: 50px; /* More margin */
+    background: linear-gradient(145deg, #FF6347, #FF4500); /* Tomato to OrangeRed */
+    color: white;
+    border: none;
+    border-radius: 60px; /* More rounded */
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em; /* Larger font */
+    font-weight: 700; /* Bolder */
+    letter-spacing: 1.5px; /* More spacing */
+    box-shadow: 0 10px 25px rgba(255, 69, 0, 0.5); /* Stronger, glowing shadow */
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: scale(1);
+}
+
+.next-btn:hover, .continue-btn:hover, .return-to-start-btn:hover {
+    background: linear-gradient(145deg, #FF4500, #FF6347); /* Inverted gradient on hover */
+    box-shadow: 0 15px 35px rgba(255, 69, 0, 0.7);
+    transform: translateY(-5px) scale(1.03); /* More pronounced lift and slight scale */
+}
+
+.next-btn:active, .continue-btn:active, .return-to-start-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 20px rgba(255, 69, 0, 0.4);
+}
+
+/* Music Controls - Still subtle, but fits new palette */
+.music-controls, .music-toggle-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 65px; /* Slightly larger */
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 3px solid #FF69B4; /* Hot Pink Border */
+}
+
+.music-toggle-btn {
+    border-radius: 15px; /* More rounded rectangle */
+    width: auto;
+    padding: 12px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    color: #555;
+    bottom: 25px;
+    left: 110px; /* Adjust position relative to larger music control */
+    border: 3px solid #87CEEB; /* Light Blue Border */
+}
+
+.music-controls button {
+    background: none;
+    border: none;
+    font-size: 2.2em; /* Larger icon */
+    color: #FF1493; /* Deep Pink Icon */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.music-controls button:hover {
+    transform: scale(1.15);
+}
+
+/* --- Balloon Background Animation --- */
+.balloon-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through */
+    overflow: hidden; /* Ensures balloons stay within bounds */
+    z-index: 1; /* Below page-container but above body background */
+}
+
+.balloon {
+    position: absolute;
+    width: var(--balloon-size, 80px);
+    height: var(--balloon-height, 100px);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Oval shape */
+    background: var(--balloon-color, linear-gradient(135deg, #FF69B4, #FFB6C1)); /* Default pink gradient */
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2), 5px 5px 15px rgba(0, 0, 0, 0.2); /* 3D effect */
+    opacity: 0; /* Hidden initially, controlled by animation */
+    animation: floatBalloon var(--float-duration, 15s) ease-in-out infinite,
+               fadeInOut var(--float-duration, 15s) ease-in-out infinite;
+    transform: translateY(100vh); /* Start off-screen at bottom */
+    transform-origin: center bottom; /* For rotation */
+    filter: brightness(var(--brightness, 1)); /* For color variations */
+}
+
+.balloon::before { /* Balloon 'knot' */
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--balloon-knot-color, #CC3366); /* Darker pink */
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.balloon::after { /* Balloon 'string' */
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 30px;
+    background-color: #666;
+    opacity: 0.7;
+}
+
+/* Individual balloon color variations */
+.balloon:nth-child(3n+1) { /* Pink */
+    --balloon-color: linear-gradient(135deg, #FF69B4, #FFB6C1);
+    --balloon-knot-color: #CC3366;
+    --brightness: 1;
+}
+.balloon:nth-child(3n+2) { /* Orange */
+    --balloon-color: linear-gradient(135deg, #FFA500, #FFD700);
+    --balloon-knot-color: #CC8400;
+    --brightness: 1.1;
+}
+.balloon:nth-child(3n+3) { /* Light Blue */
+    --balloon-color: linear-gradient(135deg, #87CEEB, #B0E0E6);
+    --balloon-knot-color: #5A9BB3;
+    --brightness: 0.95;
+}
+
+/* Balloon Animation Keyframes */
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(var(--drift-amount, 50px)) rotate(var(--rotate-amount, 30deg));
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* Confetti background effect (applied to body or a wrapper) - Keep for confetti) */
+.confetti-background {
+    position: absolute; /* Changed from fixed to absolute to be relative to body */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5; /* Above balloons, below page-container */
+    overflow: hidden;
+}
+
+/* Individual confetti pieces - generated by JS */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--confetti-color);
+    border-radius: 2px;
+    transform: rotate(var(--confetti-rotation, 0deg));
+    animation: fallAndFade var(--confetti-duration, 5s) linear infinite;
+    opacity: 0;
+}
+
+@keyframes fallAndFade {
+    0% { transform: translate(var(--start-x), -10%) rotate(var(--confetti-rotation, 0deg)); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translate(var(--end-x), 110%) rotate(var(--confetti-rotation-end, 360deg)); opacity: 0; }
+}
+
+/* Specific Page Styles (from previous iteration - ensure consistency) */
+
+/* Index Page - Birthday Welcome */
+.index-page h1 {
+    font-size: 6em; /* Even larger */
+    line-height: 1;
+    color: #FF007F; /* Deep Pink */
+}
+
+.index-page p {
+    font-size: 1.3em; /* Slightly larger */
+    max-width: 750px;
+    color: #333;
+}
+
+.index-page .celebrate-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em; /* Larger */
+    color: #8A2BE2; /* Blue Violet accent */
+    margin-top: 40px;
+    animation: popIn 1.5s forwards ease-out;
+    opacity: 0;
+}
+
+/* Gallery Page - Moments & Memories */
+.gallery-page h1 {
+    font-size: 4em;
+    color: #8A2BE2;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px; /* Slightly larger gap */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.gallery-card {
+    background-color: #fff;
+    border-radius: 15px; /* More rounded */
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+    border: 3px dashed #FFD700; /* Gold dashed border */
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInSlideUp 0.8s forwards ease-out;
+}
+
+.gallery-card img {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: block;
+    max-width: 100%;
+    height: 250px; /* Slightly taller images */
+    object-fit: cover;
+    border: 5px solid #FF8C00; /* Darker orange border */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* More prominent image shadow */
+}
+
+.gallery-card p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+}
+
+.gallery-card:hover {
+    transform: translateY(-10px) scale(1.04); /* More pronounced lift and scale */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    border-color: #FF4500; /* OrangeRed on hover */
+}
+
+/* Wishes Page - Your Loving Messages */
+.wishes-page h1 {
+    color: #FF69B4; /* Hot Pink */
+}
+
+.wish-input-section {
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.85); /* Less transparent */
+    padding: 35px; /* More padding */
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px rgba(255, 100, 150, 0.15), 0 5px 15px rgba(0,0,0,0.1); /* Added outer shadow */
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wish-input-section label {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: 700; /* Bolder label */
+}
+
+.wish-input-section input,
+.wish-input-section textarea {
+    width: calc(100% - 24px); /* Account for larger padding */
+    padding: 15px; /* Larger padding */
+    margin-bottom: 25px;
+    border: 2px solid #ccc; /* Thicker border */
+    border-radius: 10px; /* More rounded */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wish-input-section input:focus,
+.wish-input-section textarea:focus {
+    border-color: #FF69B4; /* Hot Pink focus */
+    box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.3); /* Stronger glow */
+    outline: none;
+}
+
+.wish-input-section textarea {
+    min-height: 120px; /* Taller textarea */
+}
+
+.wish-submit-btn {
+    background: linear-gradient(145deg, #7CFC00, #32CD32); /* Lawn Green to Lime Green */
+    box-shadow: 0 10px 25px rgba(124, 252, 0, 0.5);
+    color: white;
+    padding: 18px 35px; /* Larger */
+    border-radius: 60px;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.wish-submit-btn:hover {
+    background: linear-gradient(145deg, #32CD32, #7CFC00);
+    box-shadow: 0 12px 30px rgba(124, 252, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.wishes-display {
+    margin-top: 60px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.wish-item {
+    background-color: #FFFAFA; /* Snow White */
+    border: 2px dashed #FFDAB9; /* Peachpuff dashed border */
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wish-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.wish-item strong {
+    color: #FF69B4; /* Hot Pink for names */
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.wish-item p {
+    font-style: italic;
+    color: #666;
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 1.05em;
+}
+
+
+/* Journey & Dreams Pages - Similar styling */
+.journey-page h1, .dreams-page h1 {
+    color: #FF8C00; /* Dark Orange accent */
+}
+
+.milestone-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Larger gap */
+    margin-top: 50px;
+    padding: 0 10px;
+}
+
+.milestone-card {
+    background-color: #fff;
+    border-radius: 20px; /* More rounded */
+    padding: 35px; /* More padding */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18); /* Stronger shadow */
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px; /* Larger gap */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid #87CEEB; /* Light blue border */
+}
+
+.milestone-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.milestone-icon {
+    flex-shrink: 0;
+    width: 70px; /* Larger icon */
+    height: 70px;
+    background-color: #FFFACD; /* Lemon Chiffon */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em; /* Larger icon font */
+    color: #FFD700; /* Gold icon */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.milestone-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8em; /* Larger heading */
+    color: #8A2BE2; /* Blue Violet */
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-shadow: none;
+    text-align: left;
+}
+
+.milestone-content p {
+    font-size: 1.05em;
+    color: #555;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+/* Dreams Page specific styling */
+.dreams-page .page-container {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.98), rgba(240, 250, 255, 0.98));
+    border: 5px solid #7CFC00; /* Lawn Green border */
+}
+
+.dream-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dream-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px 30px; /* More padding */
+    margin-bottom: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 8px solid #1E90FF; /* Dodger Blue accent */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dream-item:hover {
+    transform: translateX(8px); /* More pronounced slide */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dream-icon {
+    font-size: 2.2em; /* Larger icon */
+    color: #1E90FF; /* Dodger Blue */
+    flex-shrink: 0;
+}
+
+.dream-item p {
+    margin: 0;
+    font-size: 1.1em; /* Slightly larger */
+    color: #444;
+    text-align: left;
+}
+
+
+/* Celebration Page - The Big Party! */
+.celebration-page {
+    background: linear-gradient(to top, #FFFAF0 0%, #FFF0F5 100%); /* Floral White to Lavender Blush */
+}
+
+.celebration-page .page-container {
+    background-color: rgba(255, 255, 255, 0.99); /* Almost opaque */
+    border: 8px solid #FFD700; /* Thicker Gold border */
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4); /* Much stronger shadow */
+    min-height: 90vh; /* Taller */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: visible;
+}
+
+.celebration-page h1 {
+    font-size: 6.5em; /* Grandest heading */
+    color: #FF007F; /* Deep Pink */
+    letter-spacing: 4px;
+    animation: bounceIn 1.2s ease-out; /* Slightly longer animation */
+}
+
+.celebration-page .subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em; /* Larger */
+    color: #8A2BE2; /* Blue Violet */
+    margin-top: -25px;
+    margin-bottom: 45px;
+    animation: fadeIn 2.5s forwards; /* Longer fade */
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.celebration-page p {
+    font-size: 1.4em; /* Larger */
+    max-width: 850px;
+    color: #555;
+    animation: fadeIn 2.5s forwards;
+    animation-delay: 1.2s;
+    opacity: 0;
+}
+
+.birthday-cake {
+    position: relative;
+    width: 280px; /* Larger cake */
+    height: 220px;
+    background-color: #fff;
+    border-radius: 15px 15px 50px 50px;
+    border: 8px solid #FFD700; /* Gold */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    margin: 60px auto;
+    animation: cakePopUp 1.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(70px) scale(0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.cake-top {
+    position: absolute;
+    top: -25px; /* Higher */
+    width: 100%;
+    height: 60px; /* Taller frosting */
+    background-color: #FFEB3B; /* Yellow frosting */
+    border-radius: 50%;
+    border: 4px solid #FFC107;
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.4);
+}
+
+.cake-layers {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.cake-layer {
+    width: 100%;
+    height: 33%;
+    background-color: #FFC0CB; /* Baby Pink */
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 2px solid rgba(255, 200, 200, 0.6);
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.cake-layer:nth-child(2) { background-color: #FFB6C1; } /* Light Pink */
+.cake-layer:nth-child(1) { background-color: #FF69B4; } /* Hot Pink */
+
+
+.candle-container {
+    position: absolute;
+    top: -60px; /* Higher above cake */
+    display: flex;
+    gap: 20px; /* Larger gap */
+    z-index: 10;
+}
+
+.candle {
+    width: 10px; /* Thicker */
+    height: 40px; /* Taller */
+    background: linear-gradient(to top, #fff 0%, #eee 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+.flame {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px; /* Larger flame */
+    height: 18px;
+    background: radial-gradient(circle, #ffd700 0%, #ff8c00 50%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 1.2s infinite alternate; /* Faster flicker */
+    box-shadow: 0 0 10px #ffeb3b; /* Stronger glow */
+}
+
+/* --- Birthday Specific Animations --- */
+@keyframes cakePopUp {
+    from { opacity: 0; transform: translateY(70px) scale(0.7); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes bounceIn { /* Standard bounceIn, kept as is */
+    0%, 20%, 40%, 60%, 80%, 100% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+        transition-timing-function: cubic-bezier(0.215, .61, .355, 1)
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3)
+    }
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1)
+    }
+    40% {
+        -webkit-transform: scale3d(.9, .9, .9);
+        transform: scale3d(.9, .9, .9)
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03)
+    }
+    80% {
+        -webkit-transform: scale3d(.97, .97, .97);
+        transform: scale3d(.97, .97, .97)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1)
+    }
+}
+
+@keyframes fadeIn { /* Standard fadeIn, kept as is */
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes flicker { /* Adjusted flicker for larger flame */
+    0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    25% { opacity: 0.8; transform: translateX(-50%) scale(1.05) translateY(-1px); }
+    50% { opacity: 1; transform: translateX(-50%) scale(0.98) translateY(0); }
+    75% { opacity: 0.9; transform: translateX(-50%) scale(1.03) translateY(-0.5px); }
+}
+
+/* Animations for general page elements */
+@keyframes popIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(30px); } /* More pronounced slide */
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) { /* Added a breakpoint for tablets */
+    .page-container {
+        padding: 50px 40px;
+    }
+    h1 { font-size: 4.5em; }
+    h2 { font-size: 2.5em; }
+    p { font-size: 1.1em; }
+    .next-btn, .continue-btn, .return-to-start-btn {
+        padding: 18px 40px;
+        font-size: 1.2em;
+    }
+    .gallery-card img { height: 200px; }
+    .milestone-icon { width: 65px; height: 65px; font-size: 2.2em; }
+    .milestone-content h3 { font-size: 1.7em; }
+    .dream-icon { font-size: 2em; }
+    .birthday-cake { width: 250px; height: 200px; }
+    .candle-container { top: -50px; gap: 15px; }
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        width: 95%;
+        padding: 40px 30px;
+        margin: 20px auto;
+        border-radius: 20px;
+    }
+
+    h1 { font-size: 3.5em; margin-bottom: 25px; }
+    h2 { font-size: 2em; }
+    p { font-size: 1em; margin-bottom: 20px; }
+
+    .index-page h1 { font-size: 4em; }
+    .index-page .celebrate-message { font-size: 1.8em; }
+
+    .next-btn, .continue-btn, .return-to-start-btn {
+        padding: 15px 30px;
+        font-size: 1.1em;
+        margin-top: 30px;
+        border-radius: 50px;
+    }
+
+    .music-controls, .music-toggle-btn {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        left: 20px;
+        border-width: 2px;
+    }
+    .music-controls button { font-size: 2em; }
+    .music-toggle-btn {
+        left: 90px;
+        padding: 10px 18px;
+        font-size: 0.9em;
+        border-width: 2px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0;
+    }
+    .gallery-card { padding: 20px; border-width: 2px; }
+    .gallery-card img { height: 180px; border-width: 3px; }
+
+    .wish-input-section { padding: 25px; border-radius: 15px; }
+    .wish-input-section label { font-size: 1.1em; }
+    .wish-input-section input, .wish-input-section textarea { padding: 12px; margin-bottom: 20px; border-width: 1px; }
+    .wish-submit-btn { padding: 15px 30px; font-size: 1.1em; border-radius: 50px; }
+    .wishes-display { padding: 20px; border-radius: 15px; }
+    .wish-item { padding: 20px; margin-bottom: 20px; border-width: 1px; border-radius: 10px; }
+    .wish-item strong { font-size: 1.1em; }
+    .wish-item p { font-size: 1em; }
+
+    .milestone-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 25px;
+        border-radius: 15px;
+        border-width: 2px;
+    }
+    .milestone-icon { width: 60px; height: 60px; font-size: 2em; }
+    .milestone-content h3, .milestone-content p { text-align: center; }
+    .milestone-content h3 { font-size: 1.6em; }
+
+    .dream-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        border-left: none;
+        border-bottom: 5px solid #1E90FF;
+        padding: 20px 25px;
+        border-radius: 10px;
+    }
+    .dream-item p { text-align: center; font-size: 1em; }
+    .dream-icon { font-size: 1.8em; }
+
+
+    .celebration-page .page-container {
+        border-width: 5px;
+        min-height: 80vh;
+    }
+    .celebration-page h1 { font-size: 4.5em; letter-spacing: 2px; }
+    .celebration-page .subtitle { font-size: 2.5em; margin-top: -15px; margin-bottom: 30px; }
+    .celebration-page p { font-size: 1.2em; }
+
+    .birthday-cake { width: 220px; height: 180px; margin: 40px auto; border-width: 5px; }
+    .cake-top { top: -20px; height: 50px; border-width: 3px; }
+    .cake-layer { margin-bottom: 5px; border-width: 1px; }
+    .candle-container { top: -45px; gap: 12px; }
+    .candle { width: 8px; height: 35px; }
+    .flame { width: 10px; height: 16px; top: -9px; }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 30px 15px;
+        margin: 15px auto;
+        border-radius: 15px;
+    }
+
+    h1 { font-size: 2.8em; margin-bottom: 20px; }
+    .index-page h1 { font-size: 3.2em; }
+    .index-page .celebrate-message { font-size: 1.6em; }
+
+    h2 { font-size: 1.6em; }
+    p { font-size: 0.9em; }
+
+    .next-btn, .continue-btn, .return-to-start-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+        margin-top: 25px;
+    }
+
+    .music-controls, .music-toggle-btn {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        left: 15px;
+    }
+    .music-controls button { font-size: 1.8em; }
+    .music-toggle-btn {
+        left: 75px;
+        padding: 8px 12px;
+        font-size: 0.8em;
+    }
+
+    .gallery-card img { height: 150px; }
+    .milestone-icon { width: 50px; height: 50px; font-size: 1.8em; }
+    .milestone-content h3 { font-size: 1.4em; }
+
+    .dream-item { padding: 15px 20px; }
+    .dream-icon { font-size: 1.5em; }
+
+    .celebration-page h1 { font-size: 3.5em; }
+    .celebration-page .subtitle { font-size: 2em; }
+    .celebration-page p { font-size: 1em; }
+
+    .birthday-cake { width: 180px; height: 150px; margin: 30px auto; }
+    .candle-container { top: -40px; gap: 10px; }
+    .candle { width: 7px; height: 30px; }
+    .flame { width: 9px; height: 14px; top: -7px; }
+}
